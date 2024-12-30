@@ -1,0 +1,88 @@
+<template>
+    <div class="container">
+    <lightning-card class="resume-container">
+        <lightning-layout>
+            <lightning:layoutItem size="6">
+                <div class="left-section">
+            <div class="profile">
+                <img src={ProfilepicURL} alt="Profile Picture" class="profile-picture" />
+                <h2 class="name">{personalDetails.name}</h2>
+                <p class="contact-details">{personalDetails.email}</p>
+                <p class="contact-details">{personalDetails.phone}</p>
+                <p class="contact-details">{personalDetails.experience}</p>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Technical Skills</h3>
+                <ul>
+                    <template for:each={technicalSkills} for:item="skill">
+                        <li key={skill}>{skill}</li>
+                    </template>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Key Skills</h3>
+                <ul>
+                    <template for:each={keySkills} for:item="skill">
+                        <li key={skill.name}>{skill.name} {skill.rating}</li>
+                    </template>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Personal Details</h3>
+                <ul>
+                    <li>Date of Birth: {personalDetails.dob}</li>
+                    <li>Gender: {personalDetails.gender}</li>
+                    <li>City: {personalDetails.city}</li>
+                </ul>
+            </div>
+        </div>
+
+            </lightning:layoutItem>
+        <lightning:layoutItem size="6">
+        <div class="right-section">
+            <blockquote class="intro">
+                {summary}
+            </blockquote>
+
+            <div class="section">
+                <h3 class="section-title">Work Experience</h3>
+                <ul>
+                    <template for:each={workExperience} for:item="job">
+                        <li key={job.company}>
+                            <strong>{job.company}</strong> - {job.role} <em>({job.dates})</em>
+                            <p>{job.description}</p>
+                            <ul classs="bullets">
+                                <li>{job.bullet1}</li>
+                                <li>{job.bullet2}</li>
+                                <li>{job.bullet3}</li>
+                                <li>{job.bullet4}</li>
+                                <li>{job.bullet5}</li>
+                                <li>{job.bullet6}</li>
+                                <li>{job.bullet7}</li>
+                            </ul>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Education</h3>
+                <ul>
+                    <template for:each={education} for:item="edu">
+                        <li key={edu.degree}>
+                            <strong>{edu.degree}</strong> ({edu.years}) - {edu.institution}, {edu.grade}
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+        </lightning:layoutItem>
+        
+        </lightning-layout>
+        
+    </lightning-card>
+    </div>
+</template>
